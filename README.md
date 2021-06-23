@@ -1,0 +1,1 @@
+# COVID19_score_japaan
