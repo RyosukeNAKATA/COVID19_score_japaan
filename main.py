@@ -13,17 +13,15 @@ def main():
     sp.call("mv new nhk_news_covid19_prefectures_daily_data.csv", shell=True)
     df = pd.read_csv("nhk_news_covid19_prefectures_daily_data.csv")
     sp.call("rm nhk_news_covid19_prefectures_daily_data.csv", shell=True)
-
-
     sp.call("wget https://github.com/ytakefuji/covid_score_japan/raw/main/jppop.xlsx", shell=True)
     populations = pd.read_excel("jppop.xlsx", header=0)
     sp.call("rm jppop.xlsx", shell=True)
+
     populations = populations[1:-3]
     population = populations.iloc[:, 33].reset_index()
     date = df.iloc[-1]['日付']
     df = df[df['日付']==date].reset_index()
     prefecture = df.iloc[:, 3]
-
     data = pd.DataFrame({
         "prefecture": prefecture,
         "death": range(len(prefecture)),
