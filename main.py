@@ -34,7 +34,7 @@ def main():
         data.at[data.index[i], 'prefecture'] = prefecture[i]
         data.at[data.index[i], 'death'] = int(df.loc[df['都道府県名']==prefecture[i], '各地の死者数_累計'])
         data.at[data.index[i], 'population'] = int(population.iloc[i, 1])
-        data.at[data.index[i], 'score'] = data.at[data.index[i], 'death'] / data.at[data.index[i], 'population']
+        data.at[data.index[i], 'score'] = data.at[data.index[i], 'death']/data.at[data.index[i], 'population']
         data = data.sort_values(by=['score'])
     display(data)
 
